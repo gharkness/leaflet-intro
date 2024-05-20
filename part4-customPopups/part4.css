@@ -1,0 +1,9 @@
+#map {
+    height: 1250px;
+    width: 100%;
+}
+
+.leaflet-popup-content {
+    width: auto !important;
+    height: auto !important;
+}
