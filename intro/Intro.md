@@ -4,4 +4,4 @@
   - Mostly
 - Simple
 - Large friendly community
-- Lots of cool plugins
+- Lots of cool [plugins](https://leafletjs.com/plugins.html)
