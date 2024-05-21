@@ -1,12 +1,10 @@
 var map = L.map('map').setView([51.4817, -0.1910], 13);
 
-// Add a tile layer to the map
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
 }).addTo(map);
 
-// Define a GeoJSON object
-var geojsonFeature = {
+var stamfordBridge = {
     "type": "Feature",
     "properties": {
         "name": "Stamford Bridge",
@@ -19,5 +17,27 @@ var geojsonFeature = {
     }
 };
 
-// Add the GeoJSON layer to the map
-L.geoJSON(geojsonFeature).addTo(map);
+var selhurstPark = {
+    "type": "Feature",
+    "properties": {
+        "name": "Selhurst Park",
+        "amenity": "Football Stadium",
+        "popupContent": "This is where Crystal Palace FC plays!"
+    },
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+            [-0.086084 - 0.001, 51.398338 - 0.001],
+            [-0.086084 + 0.001, 51.398338 - 0.001],
+            [-0.086084 + 0.001, 51.398338 + 0.001],
+            [-0.086084 - 0.001, 51.398338 + 0.001],
+            [-0.086084 - 0.001, 51.398338 - 0.001]
+        ]]
+    }
+};
+
+L.geoJSON([stamfordBridge, selhurstPark], {
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup(feature.properties.popupContent);
+    }
+}).addTo(map);
